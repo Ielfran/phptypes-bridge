@@ -1,0 +1,39 @@
+parameters:
+    level: 8
+    paths:
+        - src
+        - tests
+
+    # Treat all errors as fatal
+    reportUnmatchedIgnoredErrors: true
+
+    # Enforce strict mode
+    checkMissingIterableValueType: true
+    checkGenericClassInNonGenericObjectType: true
+    checkImplicitMixed: true
+
+    # Ignore specific known false-positives
+    ignoreErrors:
+        # ReflectionClass generics — PHPStan doesn't infer these from string FQCNs
+        - message: '#ReflectionClass\<object\>#'
+          path: src/Parser
+          count: 20
+
+        # @phpstan-ignore-line on match arms is intentional — we cast after kind() check
+        - message: '#Dead catch#'
+          paths:
+              - src/Parser/DtoParser.php
+              - src/Parser/EndpointParser.php
+
+        # Dynamic require in ConfigLoader is intentional
+        - message: '#Variable variables are not allowed#'
+          path: src/Config/ConfigLoader.php
+
+    # Stricter type checks
+    strictRules:
+        allRules: true
+
+    # Symfony Console uses some dynamic patterns that confuse level 8
+    excludePaths:
+        - src/Console/*.php
+

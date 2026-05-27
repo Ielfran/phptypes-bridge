@@ -1,0 +1,29 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+$autoloaders = [
+    __DIR__ . '/../vendor/autoload.php', 
+    __DIR__ . '/vendor/autoload.php',
+    __DIR__ . '/../autoload.php',        
+];
+
+$loaded = false;
+foreach ($autoloaders as $file) {
+    if (file_exists($file)) {
+        require $file;
+        $loaded = true;
+        break;
+    }
+}
+
+if (!$loaded) {
+    fwrite(STDERR, "Could not find autoloader. Run `composer install` first.\n");
+    exit(1);
+}
+
+use PHPTypeS\Bridge\Console\BridgeApplication;
+
+$app = new BridgeApplication();
+exit($app->run());

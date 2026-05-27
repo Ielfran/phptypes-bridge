@@ -1,0 +1,8 @@
+/vendor/
+/.phpunit.result.cache
+/.php-cs-fixer.cache
+/phptypes.php
+/autoload.php
+*.log
+.DS_Store
+Thumbs.db
