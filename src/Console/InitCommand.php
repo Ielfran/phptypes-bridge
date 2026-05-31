@@ -49,9 +49,9 @@ final class InitCommand extends Command
         <?php
 
         /**
-         * PHPTypeS/bridge configuration
+         * ielfran/phptypes-bridge configuration
          *
-         * @see https://github.com/PHPTypeS/bridge
+         * @see https://github.com/ielfran/phptypes-bridge
          */
         return [
             /*

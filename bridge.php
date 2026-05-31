@@ -3,7 +3,7 @@
 /**
  * typedphp/bridge configuration
  *
- * @see https://github.com/typedphp/bridge
+ * @see https://github.com/ielfran/phptypes-bridge
  */
 return [
     /*
